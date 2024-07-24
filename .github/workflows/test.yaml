@@ -9,31 +9,35 @@ on:
   # Reference: https://dev.to/petrsvihlik/using-environment-protection-rules-to-secure-secrets-when-building-external-forks-with-pullrequesttarget-hci
   pull_request_target:
     branches: [ main ]
-  push:
-    branches: [ main ]
   merge_group:
 jobs:
-  test:
-    name: Test
+  approve:
+    name: Approve
     environment:
       # For security reasons, all pull requests need to be approved first before granting access to secrets
       # So the environment should be set to have a reviewer/s inspect it before approving it
       name: ${{ github.event_name == 'pull_request_target' && 'Test Pull Request' || 'Test Auto'  }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for approval
+        run: echo "Approved"
+
+  test:
+    name: Test
+    needs: [approve]
+    permissions:
+      pull-requests: write
+    environment:
+      name: Test Auto
     runs-on: ubuntu-22.04
     env:
       COMPOSE_PROJECT_NAME: ci_${{github.run_id}}_${{github.run_attempt || '1'}}
       DEVICE_ID: ci_${{github.run_id}}_${{github.run_attempt || '1'}}
     steps:
-      # Checkout either the PR or the branch
-      - name: Checkout PR
-        if: ${{ github.event_name == 'pull_request_target' }}
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }} # Check out the code of the PR. Only after the manual approval process
-
       - name: Checkout
         uses: actions/checkout@v4
-        if: ${{ github.event_name != 'pull_request_target' }}
+        with:
+          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || '' }}
 
       - uses: reubenmiller/setup-go-c8y-cli@main
       - name: create .env file
