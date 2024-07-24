@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Package 1 binary"
+exit 0

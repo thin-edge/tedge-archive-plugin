@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Running post installation script: $0"
+exit 0

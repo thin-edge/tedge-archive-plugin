@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://nfpm.goreleaser.com/static/schema.json
+---
+name: tedge-archive-plugin
+arch: all
+platform: linux
+version: ${SEMVER}
+release: "r1"
+section: misc
+priority: optional
+maintainer: Community <community@thin-edge.io>
+description: thin-edge.io archive software management plugin to install/remove packages using simple archives on systems without a package manager or a readonly filesystem
+vendor: thin-edge.io
+homepage: https://github.com/thin-edge/tedge-archive-plugin
+license: Apache License 2.0
+apk:
+  # Use noarch instead of "all"
+  arch: noarch
+contents:
+  - src: ./src/sm-plugin/*
+    dst: /usr/bin/
+    file_info:
+      mode: 0755
+      owner: tedge
+      group: tedge
+  
+  - src: /usr/bin/tedge-archive-plugin
+    dst: /etc/tedge/sm-plugins/archive
+    type: symlink
