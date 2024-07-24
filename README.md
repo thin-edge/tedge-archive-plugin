@@ -44,11 +44,11 @@ The following Table
 
 |Path|Description|
 |----|-----------|
-|`SCRIPTS/preinst`|List|
-|`SCRIPTS/postinst`|Script to be executed after|
+|`SCRIPTS/preinst`|Maintainer script which is executed prior to the archive being expanded. Must have `755` chmod permissions to be executed!|
+|`SCRIPTS/postinst`|Maintainer script which is executed after the archive has been expanded. Must have `755` chmod permissions to be executed!|
 |`*/*`|All other paths will be unpacked into the `ROOT_DIR` as defined in the `/etc/tedge/sm-plugins/archive` script|
 
-The `ROOT_DIR` can be controlled by setting a dotenv file in the following location
+The `ROOT_DIR` can be controlled by setting a dotenv file in the following location:
 
 ```sh
 /etc/tedge-archive-plugin/env
