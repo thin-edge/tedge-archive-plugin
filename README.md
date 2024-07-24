@@ -22,7 +22,9 @@ The following linux package formats are provided on the releases page and also i
 
 |Operating System|Repository link|
 |--|--|
+|Debian/Raspbian (deb)|[![Latest version of 'tedge-archive-plugin' @ Cloudsmith](https://api-prd.cloudsmith.io/v1/badges/version/thinedge/community/deb/tedge-archive-plugin/latest/a=all;d=any-distro%252Fany-version;t=binary/?render=true&show_latest=true)](https://cloudsmith.io/~thinedge/repos/community/packages/detail/deb/tedge-archive-plugin/latest/a=all;d=any-distro%252Fany-version;t=binary/)|
 |Alpine Linux (apk)|[![Latest version of 'tedge-archive-plugin' @ Cloudsmith](https://api-prd.cloudsmith.io/v1/badges/version/thinedge/community/alpine/tedge-archive-plugin/latest/a=noarch;d=alpine%252Fany-version/?render=true&show_latest=true)](https://cloudsmith.io/~thinedge/repos/community/packages/detail/alpine/tedge-archive-plugin/latest/a=noarch;d=alpine%252Fany-version/)|
+|RHEL/CentOS/Fedora (rpm)|[![Latest version of 'tedge-archive-plugin' @ Cloudsmith](https://api-prd.cloudsmith.io/v1/badges/version/thinedge/community/rpm/tedge-archive-plugin/latest/a=noarch;d=any-distro%252Fany-version;t=binary/?render=true&show_latest=true)](https://cloudsmith.io/~thinedge/repos/community/packages/detail/rpm/tedge-archive-plugin/latest/a=noarch;d=any-distro%252Fany-version;t=binary/)|
 
 ### What will be deployed to the device?
 
